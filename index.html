@@ -1,123 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Shurigatto — Precision Arcade</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A precision arcade game about spinning too fast, missing by 1 pixel, and trying again anyway.">
-  <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-      background: #000;
-      color: #ffffff;
-      line-height: 1.6;
-    }
+<meta charset="UTF-8">
+<title>Shurigatto — Precision Arcade</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A precision arcade game about spinning too fast, missing by 1 pixel, and trying again anyway.">
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      text-align: center;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  background: #000;
+  color: #ffffff;
+  line-height: 1.6;
+}
 
-    .hero-video {
-      width: 100%;
-      max-width: 900px;
-      border-radius: 16px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-      margin-bottom: 40px;
-    }
+.language-switcher {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+}
 
-    .title-image {
-      width: 100%;
-      max-width: 650px;
-      margin: 0 auto 30px auto;
-      display: block;
-    }
+.language-switcher button {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  margin-right: 8px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
 
-    .tagline {
-      font-size: 18px;
-      color: #aaaaaa;
-      margin-bottom: 40px;
-    }
+.language-switcher button:hover {
+  opacity: 1;
+}
 
-    .cta-button {
-      display: inline-block;
-      padding: 14px 28px;
-      margin: 20px 10px;
-      background: #ff4f8b;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: opacity 0.2s ease;
-    }
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 20px 40px 20px;
+  text-align: center;
+}
 
-    .cta-button:hover {
-      opacity: 0.8;
-    }
+.hero-video {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  margin-bottom: 40px;
+}
 
-    .section {
-      margin-top: 60px;
-    }
+.title-image {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto 30px auto;
+  display: block;
+}
 
-    .footer {
-      margin-top: 80px;
-      font-size: 14px;
-      color: #777;
-    }
+.tagline {
+  font-size: 18px;
+  color: #aaaaaa;
+  margin-bottom: 40px;
+}
 
-    a {
-      color: #ff4f8b;
-    }
-  </style>
+.cta-button {
+  display: inline-block;
+  padding: 14px 28px;
+  margin: 20px 10px;
+  background: #ff4f8b;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.section {
+  margin-top: 60px;
+}
+
+.footer {
+  margin-top: 80px;
+  font-size: 14px;
+  color: #777;
+}
+</style>
 </head>
 <body>
 
-  <div class="container">
+<div class="language-switcher">
+  <button onclick="setLanguage('en')">🇬🇧</button>
+  <button onclick="setLanguage('fr')">🇫🇷</button>
+  <button onclick="setLanguage('it')">🇮🇹</button>
+  <button onclick="setLanguage('es')">🇪🇸</button>
+  <button onclick="setLanguage('zh')">🇨🇳</button>
+</div>
 
-    <!-- Hero Video -->
-    <video class="hero-video" autoplay muted loop playsinline>
-      <source src="trailer_steam.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+<div class="container">
+  <img src="store_capsule_main.png" alt="Shurigatto" class="title-image">
 
-    <!-- Title Image Below Video -->
-    <img src="store_capsule_main.png" alt="Shurigatto" class="title-image">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="trailer_steam.mp4" type="video/mp4">
+  </video>
 
-    <p class="tagline">
-      A precision arcade game built around one simple mechanic: rotation.
-    </p>
+  <p id="tagline" class="tagline"></p>
 
-    <a href="#" class="cta-button">Download on the App Store</a>
-    <a href="https://irokhan.github.io/shurigatto-privacy/" class="cta-button" style="background:#333;">
-      Privacy Policy
-    </a>
+  <a href="#" class="cta-button" id="downloadBtn">Download on the App Store</a>
+  <a href="https://irokhan.github.io/shurigatto-privacy/" class="cta-button" style="background:#333;" id="privacyBtn">
+    Privacy Policy
+  </a>
 
-    <div class="section">
-      <h2>You don’t walk. You spin.</h2>
-      <p>
-        Control a ninja cat attached to a magical shuriken.
-        Every level is a compact test of timing and angles.
-        Miss by a fraction and it's over. Restart is instant.
-      </p>
-    </div>
-
-    <div class="section">
-      <h2>Built for Skill</h2>
-      <p>
-        No filler. No upgrades to hide behind.
-        Just tight controls, fast retries, and levels that expect you to improve.
-      </p>
-    </div>
-
-    <div class="footer">
-      © 2026 Shurigatto<br>
-      Contact: irokhan@gmail.com
-    </div>
-
+  <div class="section">
+    <h2 id="headline"></h2>
+    <p id="description"></p>
   </div>
+
+  <div class="section">
+    <h2 id="headline2"></h2>
+    <p id="description2"></p>
+  </div>
+
+  <div class="footer">
+    © 2026 Shurigatto<br>
+    Contact: irokhan@gmail.com
+  </div>
+
+</div>
+
+<script>
+const translations = {
+
+  en: {
+    tagline: "A precision arcade game built around one simple mechanic: rotation.",
+    download: "Download on the App Store",
+    privacy: "Privacy Policy",
+    h1: "You don’t walk. You spin.",
+    p1: "Control a ninja cat attached to a magical shuriken. Every level is a compact test of timing and angles. Miss by a fraction and it's over. Restart is instant.",
+    h2: "Built for Skill",
+    p2: "No filler. No upgrades to hide behind. Just tight controls, fast retries, and levels that expect you to improve."
+  },
+
+  fr: {
+    tagline: "Un jeu d’arcade de précision basé sur la rotation.",
+    download: "Télécharger sur l’App Store",
+    privacy: "Politique de confidentialité",
+    h1: "Vous ne marchez pas. Vous tournez.",
+    p1: "Incarnez un chat ninja relié à un shuriken magique. Chaque niveau est une épreuve de timing et d’angles. Un écart minime et c’est terminé.",
+    h2: "Conçu pour le skill",
+    p2: "Pas de remplissage. Juste du contrôle, des essais rapides, et la satisfaction de progresser."
+  },
+
+  it: {
+    tagline: "Un arcade di precisione basato sulla rotazione.",
+    download: "Scarica su App Store",
+    privacy: "Informativa sulla privacy",
+    h1: "Non cammini. Ruoti.",
+    p1: "Controlli un gatto ninja legato a uno shuriken magico. Ogni livello è una prova di tempismo e angolazioni.",
+    h2: "Per veri skill player",
+    p2: "Niente distrazioni. Solo controllo e miglioramento reale."
+  },
+
+  es: {
+    tagline: "Un arcade de precisión basado en la rotación.",
+    download: "Descargar en App Store",
+    privacy: "Política de privacidad",
+    h1: "No caminas. Giras.",
+    p1: "Controlas a un gato ninja unido a un shuriken mágico. Cada nivel es una prueba de tiempo y ángulos.",
+    h2: "Hecho para habilidad",
+    p2: "Sin relleno. Solo control y mejora constante."
+  },
+
+  zh: {
+    tagline: "围绕“旋转”机制打造的高精度街机游戏。",
+    download: "前往 App Store",
+    privacy: "隐私政策",
+    h1: "你不会行走。你只会旋转。",
+    p1: "操控与魔法手里剑相连的忍者猫。每一关都是对时机与角度的考验。",
+    h2: "为技巧而生",
+    p2: "没有冗余内容。只有精准操作与不断进步。"
+  }
+
+};
+
+function setLanguage(lang) {
+  const t = translations[lang];
+  document.getElementById("tagline").innerText = t.tagline;
+  document.getElementById("downloadBtn").innerText = t.download;
+  document.getElementById("privacyBtn").innerText = t.privacy;
+  document.getElementById("headline").innerText = t.h1;
+  document.getElementById("description").innerText = t.p1;
+  document.getElementById("headline2").innerText = t.h2;
+  document.getElementById("description2").innerText = t.p2;
+}
+
+setLanguage("en");
+</script>
 
 </body>
 </html>
