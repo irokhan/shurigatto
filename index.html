@@ -21,12 +21,12 @@
       text-align: center;
     }
 
-    .hero-image {
+    .hero-video {
       width: 100%;
-      max-width: 700px;
-      margin-bottom: 30px;
+      max-width: 800px;
       border-radius: 16px;
       box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      margin-bottom: 30px;
     }
 
     .tagline {
@@ -55,13 +55,6 @@
       margin-top: 60px;
     }
 
-    .screenshots img {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 12px;
-      margin: 10px;
-    }
-
     .footer {
       margin-top: 80px;
       font-size: 14px;
@@ -71,15 +64,17 @@
     a {
       color: #ff4f8b;
     }
-
   </style>
 </head>
 <body>
 
   <div class="container">
 
-    <!-- Title Image -->
-    <img src="store_capsule_main.png" alt="Shurigatto" class="hero-image">
+    <!-- Hero Video -->
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="trailer_steam.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
 
     <p class="tagline">
       A precision arcade game built around one simple mechanic: rotation.
