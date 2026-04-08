@@ -29,7 +29,6 @@ body {
   margin-right: 8px;
   cursor: pointer;
   opacity: 0.6;
-  transition: opacity 0.2s ease;
 }
 
 .language-switcher button:hover {
@@ -39,51 +38,61 @@ body {
 .container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 80px 20px 40px 20px;
+  padding: 80px 20px 40px;
   text-align: center;
-}
-
-.hero-video {
-  width: 100%;
-  max-width: 900px;
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-  margin-bottom: 40px;
 }
 
 .title-image {
   width: 100%;
   max-width: 650px;
-  margin: 0 auto 30px auto;
-  display: block;
+  margin-bottom: 30px;
+}
+
+.hero-video {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  margin-bottom: 40px;
 }
 
 .tagline {
   font-size: 18px;
-  color: #aaaaaa;
-  margin-bottom: 20px;
+  color: #aaa;
+  margin-bottom: 10px;
 }
 
-.identity-note {
-  max-width: 760px;
-  margin: 0 auto 40px auto;
-  color: #d0d0d0;
-  font-size: 15px;
+.identity {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 40px;
+}
+
+.cta-group {
+  margin-bottom: 40px;
 }
 
 .cta-button {
   display: inline-block;
-  padding: 14px 28px;
-  margin: 20px 10px;
-  background: #ff4f8b;
-  color: #fff;
-  text-decoration: none;
+  padding: 14px 24px;
+  margin: 10px;
   border-radius: 8px;
   font-weight: 600;
+  text-decoration: none;
 }
 
-.cta-button.secondary {
-  background: #333;
+.primary {
+  background: #ff4f8b;
+  color: #fff;
+}
+
+.secondary {
+  background: #222;
+  color: #fff;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .section {
@@ -92,34 +101,16 @@ body {
 
 .card {
   background: #111;
-  border: 1px solid #222;
-  border-radius: 16px;
-  padding: 24px;
-  margin-top: 24px;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
   text-align: left;
-}
-
-.card h3 {
-  margin-top: 0;
 }
 
 .footer {
   margin-top: 80px;
-  font-size: 14px;
-  color: #777;
-}
-
-a {
-  color: #fff;
-}
-
-ul {
-  padding-left: 20px;
-}
-
-.support-email {
-  font-weight: 700;
-  color: #fff;
+  font-size: 13px;
+  color: #666;
 }
 </style>
 </head>
@@ -134,181 +125,132 @@ ul {
 </div>
 
 <div class="container">
-  <img src="store_capsule_main.png" alt="Shurigatto" class="title-image">
 
-  <video class="hero-video" autoplay muted loop playsinline>
-    <source src="trailer_steam.mp4" type="video/mp4">
-  </video>
+<img src="store_capsule_main.png" class="title-image">
 
-  <p id="tagline" class="tagline"></p>
+<video class="hero-video" autoplay muted loop playsinline>
+  <source src="trailer_steam.mp4" type="video/mp4">
+</video>
 
-  <p id="identityNote" class="identity-note"></p>
+<p id="tagline" class="tagline"></p>
+<p id="identity" class="identity"></p>
 
-  <a href="#" class="cta-button" id="downloadBtn">Download on the App Store</a>
-  <a href="https://irokhan.github.io/shurigatto-privacy/" class="cta-button secondary" id="privacyBtn">Privacy Policy</a>
+<div class="cta-group">
+  <a href="#" class="cta-button primary" id="appstore"></a>
 
-  <div class="section">
-    <h2 id="headline"></h2>
-    <p id="description"></p>
+  <a href="#" class="cta-button secondary disabled" id="googleplay"></a>
+
+  <a href="https://store.steampowered.com/app/4344230/Shurigatto/" 
+     class="cta-button secondary" 
+     target="_blank"
+     id="steam"></a>
+</div>
+
+<div class="section">
+  <h2 id="h1"></h2>
+  <p id="p1"></p>
+</div>
+
+<div class="section">
+  <h2 id="h2"></h2>
+  <p id="p2"></p>
+</div>
+
+<div class="section">
+  <h2 id="supportTitle"></h2>
+
+  <div class="card">
+    <h3 id="contactTitle"></h3>
+    <p id="contactText"></p>
+    <strong>irokhan42@gmail.com</strong>
   </div>
 
-  <div class="section">
-    <h2 id="headline2"></h2>
-    <p id="description2"></p>
+  <div class="card">
+    <h3 id="faqTitle"></h3>
+    <ul>
+      <li id="faq1"></li>
+      <li id="faq2"></li>
+      <li id="faq3"></li>
+    </ul>
   </div>
 
-  <div class="section">
-    <h2 id="supportHeadline"></h2>
-
-    <div class="card">
-      <h3 id="supportContactTitle"></h3>
-      <p id="supportContactText"></p>
-      <p class="support-email">irokhan42@gmail.com</p>
-    </div>
-
-    <div class="card">
-      <h3 id="faqTitle"></h3>
-      <ul>
-        <li id="faq1"></li>
-        <li id="faq2"></li>
-        <li id="faq3"></li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3 id="ownershipTitle"></h3>
-      <p id="ownershipText"></p>
-    </div>
-  </div>
-
-  <div class="footer">
-    © 2026 Johan Pages / irokhan<br>
-    Shurigatto is an original game by Johan Pages (irokhan / Irokhan Games)
+  <div class="card">
+    <h3 id="devTitle"></h3>
+    <p id="devText"></p>
   </div>
 </div>
 
+<div class="footer">
+  © 2026 Johan Pages (irokhan / Irokhan Games)
+</div>
+
+</div>
+
 <script>
-const translations = {
-  en: {
-    tagline: "A precision arcade game built around one simple mechanic: rotation.",
-    identityNote: 'Shurigatto is an original game created by Johan Pages. "irokhan" and "Irokhan Games" are my personal developer name and online publishing label.',
-    download: "Download on the App Store",
-    privacy: "Privacy Policy",
-    h1: "You don’t walk. You spin.",
-    p1: "Control a ninja cat attached to a magical shuriken. Every level is a compact test of timing and angles. Miss by a fraction and it's over. Restart is instant.",
-    h2: "Built for Skill",
-    p2: "No filler. No upgrades to hide behind. Just tight controls, fast retries, and levels that expect you to improve.",
-    supportHeadline: "Support",
-    supportContactTitle: "Contact",
-    supportContactText: "If you need help with the game, encounter a bug, or have a purchase issue, please contact:",
-    faqTitle: "Frequently Asked Questions",
-    faq1: "How do I restore purchases? Open the game and tap “Restore Purchases” in the shop or support section.",
-    faq2: "How do I report a bug? Send an email with your device model, iOS version, and a short description of the issue.",
-    faq3: "How do I ask a gameplay question? Send an email and mention the level or boss you are stuck on.",
-    ownershipTitle: "Developer Information",
-    ownershipText: 'Shurigatto is an original intellectual property created and owned by Johan Pages. "irokhan" / "Irokhan Games" refers to the same developer.'
-  },
+const t = {
+en: {
+tagline: "A precision arcade game built around rotation.",
+identity: 'Shurigatto is an original game by Johan Pages (irokhan / Irokhan Games).',
+appstore: "Download on the App Store",
+googleplay: "Coming soon on Google Play",
+steam: "Play on Steam",
+h1: "You don’t walk. You spin.",
+p1: "Control a ninja cat attached to a magical shuriken. Every level is a compact test of timing and angles.",
+h2: "Built for Skill",
+p2: "No filler. Just tight controls, fast retries, and real progression.",
+support: "Support",
+contact: "Contact",
+contactText: "For help, bug reports, or purchase issues:",
+faq: "FAQ",
+faq1: "Restore purchases via the in-game button.",
+faq2: "Report bugs with device + iOS version.",
+faq3: "Gameplay help: mention level or boss.",
+dev: "Developer",
+devText: "Created and owned by Johan Pages. irokhan / Irokhan Games refer to the same developer."
+},
 
-  fr: {
-    tagline: "Un jeu d’arcade de précision basé sur une mécanique simple : la rotation.",
-    identityNote: 'Shurigatto est un jeu original créé par Johan Pages. « irokhan » et « Irokhan Games » sont mon nom de développeur et mon label de publication en ligne.',
-    download: "Télécharger sur l’App Store",
-    privacy: "Politique de confidentialité",
-    h1: "Vous ne marchez pas. Vous tournez.",
-    p1: "Contrôlez un chat ninja relié à un shuriken magique. Chaque niveau est une épreuve compacte de timing et d’angles. Une petite erreur et c’est terminé. Le redémarrage est instantané.",
-    h2: "Conçu pour le skill",
-    p2: "Pas de remplissage. Pas d’améliorations pour masquer la difficulté. Juste un contrôle précis, des retries rapides, et des niveaux qui demandent de progresser.",
-    supportHeadline: "Support",
-    supportContactTitle: "Contact",
-    supportContactText: "Si vous avez besoin d’aide, si vous rencontrez un bug ou un problème d’achat intégré, contactez :",
-    faqTitle: "Questions fréquentes",
-    faq1: "Comment restaurer mes achats ? Ouvrez le jeu et touchez « Restore Purchases » dans la boutique ou la section support.",
-    faq2: "Comment signaler un bug ? Envoyez un email avec votre modèle d’appareil, votre version iOS et une courte description du problème.",
-    faq3: "Comment poser une question sur le gameplay ? Envoyez un email en mentionnant le niveau ou le boss concerné.",
-    ownershipTitle: "Informations développeur",
-    ownershipText: 'Shurigatto est une propriété intellectuelle originale créée et détenue par Johan Pages. « irokhan » / « Irokhan Games » désigne le même développeur.'
-  },
-
-  it: {
-    tagline: "Un arcade di precisione costruito attorno a una meccanica semplice: la rotazione.",
-    identityNote: 'Shurigatto è un gioco originale creato da Johan Pages. “irokhan” e “Irokhan Games” sono il mio nome da sviluppatore e la mia etichetta di pubblicazione online.',
-    download: "Scarica su App Store",
-    privacy: "Informativa sulla privacy",
-    h1: "Non cammini. Ruoti.",
-    p1: "Controlli un gatto ninja legato a uno shuriken magico. Ogni livello è una prova compatta di tempismo e angolazioni. Basta un piccolo errore ed è finita. Il riavvio è immediato.",
-    h2: "Pensato per l’abilità",
-    p2: "Niente riempitivi. Niente potenziamenti dietro cui nascondersi. Solo controlli precisi, tentativi rapidi e livelli che richiedono miglioramento reale.",
-    supportHeadline: "Supporto",
-    supportContactTitle: "Contatto",
-    supportContactText: "Se hai bisogno di aiuto con il gioco, trovi un bug o hai un problema con gli acquisti, contatta:",
-    faqTitle: "Domande frequenti",
-    faq1: "Come ripristino gli acquisti? Apri il gioco e tocca “Restore Purchases” nel negozio o nella sezione supporto.",
-    faq2: "Come segnalo un bug? Invia un’email con modello del dispositivo, versione iOS e breve descrizione del problema.",
-    faq3: "Come faccio una domanda sul gameplay? Invia un’email indicando il livello o il boss interessato.",
-    ownershipTitle: "Informazioni sviluppatore",
-    ownershipText: 'Shurigatto è una proprietà intellettuale originale creata e posseduta da Johan Pages. “irokhan” / “Irokhan Games” si riferisce allo stesso sviluppatore.'
-  },
-
-  es: {
-    tagline: "Un arcade de precisión construido alrededor de una mecánica simple: la rotación.",
-    identityNote: 'Shurigatto es un juego original creado por Johan Pages. “irokhan” e “Irokhan Games” son mi nombre de desarrollador y mi sello de publicación en línea.',
-    download: "Descargar en App Store",
-    privacy: "Política de privacidad",
-    h1: "No caminas. Giras.",
-    p1: "Controlas a un gato ninja unido a un shuriken mágico. Cada nivel es una prueba compacta de tiempo y ángulos. Un pequeño error y se acaba. El reinicio es instantáneo.",
-    h2: "Hecho para la habilidad",
-    p2: "Sin relleno. Sin mejoras para esconderse. Solo controles precisos, intentos rápidos y niveles que exigen mejorar.",
-    supportHeadline: "Soporte",
-    supportContactTitle: "Contacto",
-    supportContactText: "Si necesitas ayuda con el juego, encuentras un bug o tienes un problema de compra, contacta con:",
-    faqTitle: "Preguntas frecuentes",
-    faq1: "¿Cómo restauro compras? Abre el juego y toca “Restore Purchases” en la tienda o en la sección de soporte.",
-    faq2: "¿Cómo informo de un bug? Envía un correo con el modelo de dispositivo, versión de iOS y una breve descripción del problema.",
-    faq3: "¿Cómo hago una pregunta sobre el juego? Envía un correo indicando el nivel o jefe en cuestión.",
-    ownershipTitle: "Información del desarrollador",
-    ownershipText: 'Shurigatto es una propiedad intelectual original creada y poseída por Johan Pages. “irokhan” / “Irokhan Games” se refiere al mismo desarrollador.'
-  },
-
-  zh: {
-    tagline: "一款围绕“旋转”这一核心机制打造的高精度街机游戏。",
-    identityNote: "Shurigatto 是 Johan Pages 创作的原创游戏。“irokhan” 和 “Irokhan Games” 是同一位开发者的个人开发者名称与线上发布名称。",
-    download: "前往 App Store",
-    privacy: "隐私政策",
-    h1: "你不会行走。你只会旋转。",
-    p1: "操控一只与魔法手里剑相连的忍者猫。每一关都是对时机与角度的紧凑考验。只差一点点就会失败，但重开是瞬间完成的。",
-    h2: "为技巧而生",
-    p2: "没有填充内容，没有用升级掩盖难度。只有精准操作、快速重试，以及真正要求玩家进步的关卡。",
-    supportHeadline: "支持",
-    supportContactTitle: "联系",
-    supportContactText: "如果你需要帮助、遇到 bug 或购买相关问题，请联系：",
-    faqTitle: "常见问题",
-    faq1: "如何恢复购买？打开游戏，在商店或支持页面点击“Restore Purchases”。",
-    faq2: "如何报告 bug？请发送邮件，并附上设备型号、iOS 版本和问题简述。",
-    faq3: "如何咨询玩法问题？请在邮件中说明你卡住的关卡或 Boss。",
-    ownershipTitle: "开发者信息",
-    ownershipText: "Shurigatto 是由 Johan Pages 创作并拥有的原创知识产权。“irokhan” / “Irokhan Games” 指的是同一位开发者。"
-  }
+fr: {
+tagline: "Un jeu d’arcade de précision basé sur la rotation.",
+identity: "Shurigatto est un jeu original de Johan Pages (irokhan / Irokhan Games).",
+appstore: "Télécharger sur l’App Store",
+googleplay: "Bientôt sur Google Play",
+steam: "Jouer sur Steam",
+h1: "Vous ne marchez pas. Vous tournez.",
+p1: "Un chat ninja relié à un shuriken magique.",
+h2: "Conçu pour le skill",
+p2: "Contrôle précis, retries rapides.",
+support: "Support",
+contact: "Contact",
+contactText: "Pour toute aide ou bug :",
+faq: "FAQ",
+faq1: "Restaurer via le bouton in-game.",
+faq2: "Envoyer device + iOS.",
+faq3: "Mentionner le niveau.",
+dev: "Développeur",
+devText: "Créé par Johan Pages (irokhan)."
+}
 };
 
-function setLanguage(lang) {
-  const t = translations[lang];
-  document.getElementById("tagline").innerText = t.tagline;
-  document.getElementById("identityNote").innerText = t.identityNote;
-  document.getElementById("downloadBtn").innerText = t.download;
-  document.getElementById("privacyBtn").innerText = t.privacy;
-  document.getElementById("headline").innerText = t.h1;
-  document.getElementById("description").innerText = t.p1;
-  document.getElementById("headline2").innerText = t.h2;
-  document.getElementById("description2").innerText = t.p2;
-  document.getElementById("supportHeadline").innerText = t.supportHeadline;
-  document.getElementById("supportContactTitle").innerText = t.supportContactTitle;
-  document.getElementById("supportContactText").innerText = t.supportContactText;
-  document.getElementById("faqTitle").innerText = t.faqTitle;
-  document.getElementById("faq1").innerText = t.faq1;
-  document.getElementById("faq2").innerText = t.faq2;
-  document.getElementById("faq3").innerText = t.faq3;
-  document.getElementById("ownershipTitle").innerText = t.ownershipTitle;
-  document.getElementById("ownershipText").innerText = t.ownershipText;
+function setLanguage(lang){
+const d = t[lang];
+document.getElementById("tagline").innerText = d.tagline;
+document.getElementById("identity").innerText = d.identity;
+document.getElementById("appstore").innerText = d.appstore;
+document.getElementById("googleplay").innerText = d.googleplay;
+document.getElementById("steam").innerText = d.steam;
+document.getElementById("h1").innerText = d.h1;
+document.getElementById("p1").innerText = d.p1;
+document.getElementById("h2").innerText = d.h2;
+document.getElementById("p2").innerText = d.p2;
+document.getElementById("supportTitle").innerText = d.support;
+document.getElementById("contactTitle").innerText = d.contact;
+document.getElementById("contactText").innerText = d.contactText;
+document.getElementById("faqTitle").innerText = d.faq;
+document.getElementById("faq1").innerText = d.faq1;
+document.getElementById("faq2").innerText = d.faq2;
+document.getElementById("faq3").innerText = d.faq3;
+document.getElementById("devTitle").innerText = d.dev;
+document.getElementById("devText").innerText = d.devText;
 }
 
 setLanguage("en");
