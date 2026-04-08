@@ -11,54 +11,49 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   background: #000;
-  color: #ffffff;
-  line-height: 1.6;
+  color: #fff;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 80px 20px 40px;
+  text-align: center;
 }
 
 .language-switcher {
   position: fixed;
   top: 15px;
   left: 15px;
-  z-index: 1000;
 }
 
 .language-switcher button {
-  background: transparent;
+  background: none;
   border: none;
-  font-size: 20px;
-  margin-right: 8px;
-  cursor: pointer;
+  font-size: 18px;
+  margin-right: 6px;
   opacity: 0.6;
+  cursor: pointer;
 }
 
 .language-switcher button:hover {
   opacity: 1;
 }
 
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 80px 20px 40px;
-  text-align: center;
-}
-
 .title-image {
-  width: 100%;
   max-width: 650px;
+  width: 100%;
   margin-bottom: 30px;
 }
 
 .hero-video {
   width: 100%;
   border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
   margin-bottom: 40px;
 }
 
 .tagline {
-  font-size: 18px;
   color: #aaa;
-  margin-bottom: 10px;
 }
 
 .identity {
@@ -68,36 +63,23 @@ body {
 }
 
 .cta-group {
-  margin-bottom: 40px;
+  margin: 30px 0;
 }
 
-.cta-button {
+.cta {
   display: inline-block;
-  padding: 14px 24px;
-  margin: 10px;
+  padding: 14px 22px;
+  margin: 8px;
   border-radius: 8px;
   font-weight: 600;
   text-decoration: none;
 }
 
-.primary {
-  background: #ff4f8b;
-  color: #fff;
-}
+.primary { background: #ff4f8b; color: white; }
+.secondary { background: #222; color: white; }
+.disabled { opacity: 0.4; pointer-events: none; }
 
-.secondary {
-  background: #222;
-  color: #fff;
-}
-
-.disabled {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.section {
-  margin-top: 60px;
-}
+.section { margin-top: 60px; }
 
 .card {
   background: #111;
@@ -117,11 +99,8 @@ body {
 <body>
 
 <div class="language-switcher">
-  <button onclick="setLanguage('en')">🇬🇧</button>
-  <button onclick="setLanguage('fr')">🇫🇷</button>
-  <button onclick="setLanguage('it')">🇮🇹</button>
-  <button onclick="setLanguage('es')">🇪🇸</button>
-  <button onclick="setLanguage('zh')">🇨🇳</button>
+  <button onclick="setLang('en')">🇬🇧</button>
+  <button onclick="setLang('fr')">🇫🇷</button>
 </div>
 
 <div class="container">
@@ -136,13 +115,13 @@ body {
 <p id="identity" class="identity"></p>
 
 <div class="cta-group">
-  <a href="#" class="cta-button primary" id="appstore"></a>
+  <a href="#" class="cta primary" id="appstore"></a>
 
-  <a href="#" class="cta-button secondary disabled" id="googleplay"></a>
+  <a href="#" class="cta secondary disabled" id="googleplay"></a>
 
   <a href="https://store.steampowered.com/app/4344230/Shurigatto/" 
-     class="cta-button secondary" 
      target="_blank"
+     class="cta secondary"
      id="steam"></a>
 </div>
 
@@ -181,79 +160,99 @@ body {
 </div>
 
 <div class="footer">
-  © 2026 Johan Pages (irokhan / Irokhan Games)
+  © 2026 Johan Pages — irokhan / Irokhan Games
 </div>
 
 </div>
 
 <script>
 const t = {
+
 en: {
 tagline: "A precision arcade game built around rotation.",
-identity: 'Shurigatto is an original game by Johan Pages (irokhan / Irokhan Games).',
+identity: "Shurigatto is an original game created and owned by Johan Pages (irokhan / Irokhan Games).",
 appstore: "Download on the App Store",
 googleplay: "Coming soon on Google Play",
-steam: "Play on Steam",
+steam: "Wishlist on Steam",
+
 h1: "You don’t walk. You spin.",
 p1: "Control a ninja cat attached to a magical shuriken. Every level is a compact test of timing and angles.",
+
 h2: "Built for Skill",
-p2: "No filler. Just tight controls, fast retries, and real progression.",
+p2: "No filler. Just tight controls, instant restarts, and real mastery.",
+
 support: "Support",
+
 contact: "Contact",
-contactText: "For help, bug reports, or purchase issues:",
+contactText: "For support, bug reports, or purchase issues, contact:",
+
 faq: "FAQ",
-faq1: "Restore purchases via the in-game button.",
-faq2: "Report bugs with device + iOS version.",
-faq3: "Gameplay help: mention level or boss.",
+faq1: "Restore purchases using the in-game 'Restore Purchases' button.",
+faq2: "Report bugs by email with your device model and iOS version.",
+faq3: "For gameplay help, mention the level or boss you are stuck on.",
+
 dev: "Developer",
-devText: "Created and owned by Johan Pages. irokhan / Irokhan Games refer to the same developer."
+devText: "Shurigatto is an original intellectual property created and owned by Johan Pages. 'irokhan' and 'Irokhan Games' refer to the same developer."
 },
 
 fr: {
 tagline: "Un jeu d’arcade de précision basé sur la rotation.",
-identity: "Shurigatto est un jeu original de Johan Pages (irokhan / Irokhan Games).",
+identity: "Shurigatto est un jeu original créé et détenu par Johan Pages (irokhan / Irokhan Games).",
 appstore: "Télécharger sur l’App Store",
 googleplay: "Bientôt sur Google Play",
-steam: "Jouer sur Steam",
+steam: "Ajouter à la liste de souhaits (Steam)",
+
 h1: "Vous ne marchez pas. Vous tournez.",
 p1: "Un chat ninja relié à un shuriken magique.",
+
 h2: "Conçu pour le skill",
-p2: "Contrôle précis, retries rapides.",
+p2: "Contrôle précis, redémarrages instantanés.",
+
 support: "Support",
+
 contact: "Contact",
-contactText: "Pour toute aide ou bug :",
+contactText: "Pour toute aide, bug ou problème d’achat :", 
+
 faq: "FAQ",
-faq1: "Restaurer via le bouton in-game.",
-faq2: "Envoyer device + iOS.",
-faq3: "Mentionner le niveau.",
+faq1: "Restaurer les achats via le bouton en jeu.",
+faq2: "Envoyer modèle + version iOS.",
+faq3: "Mentionner le niveau ou boss.",
+
 dev: "Développeur",
-devText: "Créé par Johan Pages (irokhan)."
+devText: "Shurigatto est une propriété intellectuelle originale créée par Johan Pages. 'irokhan' et 'Irokhan Games' désignent le même développeur."
 }
+
 };
 
-function setLanguage(lang){
+function setLang(lang){
 const d = t[lang];
+
 document.getElementById("tagline").innerText = d.tagline;
 document.getElementById("identity").innerText = d.identity;
+
 document.getElementById("appstore").innerText = d.appstore;
 document.getElementById("googleplay").innerText = d.googleplay;
 document.getElementById("steam").innerText = d.steam;
+
 document.getElementById("h1").innerText = d.h1;
 document.getElementById("p1").innerText = d.p1;
 document.getElementById("h2").innerText = d.h2;
 document.getElementById("p2").innerText = d.p2;
+
 document.getElementById("supportTitle").innerText = d.support;
 document.getElementById("contactTitle").innerText = d.contact;
 document.getElementById("contactText").innerText = d.contactText;
+
 document.getElementById("faqTitle").innerText = d.faq;
 document.getElementById("faq1").innerText = d.faq1;
 document.getElementById("faq2").innerText = d.faq2;
 document.getElementById("faq3").innerText = d.faq3;
+
 document.getElementById("devTitle").innerText = d.dev;
 document.getElementById("devText").innerText = d.devText;
 }
 
-setLanguage("en");
+setLang("en");
 </script>
 
 </body>
